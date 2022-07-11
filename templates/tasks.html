@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="css/tasks.css"></link>
+<div class="container">
+  <div class="todo">
+    <div class="title-container">
+      <h2 class="board-title">TODO</h2>
+    </div>
+    <div class="board">
+      {{range .todoTasks}}
+      <div class="post-it">
+        <span class="tack"></span>
+        <div class="content">{{.Name}}</div>
+        <form method="POST" action="task/done">
+          <input name="id" type="hidden" value="{{.Id.Hex}}" />
+          <button type="submit" class="submit submit-done">&#10003;</button>
+        </form>
+      </div>
+      {{end}}
+      <div class="post-it new">
+        <span class="tack"></span>
+        <div class="content">
+          <form action="task/new" method="POST">
+            <textarea name="name" type="text"></textarea>
+            <input type="submit" value="New Post-it"></input>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="done">
+    <div class="title-container">
+      <h2 class="board-title">DONE</h2>
+    </div>
+    <div class="board">
+      {{range .doneTasks}}
+      <div class="post-it">
+        <span class="tack"></span>
+        <div class="content">{{.Name}}</div>
+        <form method="POST" action="task/delete">
+          <input name="id" type="hidden" value="{{.Id.Hex}}" />
+          <button type="submit" class="submit submit-delete">DEL</button>
+        </form>
+        <form method="POST" action="task/todo">
+          <input name="id" type="hidden" value="{{.Id.Hex}}" />
+          <button type="submit" class="submit submit-todo">&#10060;</button>
+        </form>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Delius&family=Lobster&display=swap");
+body {
+  font-family: "Lobster", cursive;
+  font-size: 20px;
+  background-color: darklavender;
+  background: linear-gradient(
+    0deg,
+    rgba(230, 230, 250, 1) 0%,
+    rgba(230, 230, 250, 1) 98%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  height: 30px;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  background: url("/images/cork-board.jpg");
+  border: 10px inset brown;
+  min-height: 240px;
+  box-shadow: -3px 3px 7px 0 black;
+  margin-top: 50px;
+}
+
+.container {
+  display: flex;
+  .todo {
+    flex: 2;
+    padding: 10px;
+  }
+  .done {
+    flex: 1;
+    padding: 10px;
+  }
+  .title-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .board-title {
+      transform: rotate(2deg);
+      width: 20%;
+      padding: 10px 10px;
+      background: linear-gradient(
+          -2deg,
+          rgba(255, 255, 255, 0.8) 35%,
+          rgba(100, 100, 100, 0.8) 50%,
+          rgba(255, 255, 255, 0.8) 65%
+        ),
+        linear-gradient(
+          -2deg,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(0, 0, 0, 1) 45%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 1) 55%,
+          rgba(255, 255, 255, 0) 60%
+        );
+      box-shadow: -2px 2px 5px 0 black;
+      text-align: center;
+      text-decoration: underline;
+      position: absolute;
+    }
+  }
+}
+
+.post-it {
+  min-width: 100px;
+  max-width: 200px;
+  min-height: 200px;
+  background-color: #ffff99;
+  color: black;
+  box-shadow: -3px 3px 7px 0 black;
+  position: relative;
+  margin: 20px;
+  &.new {
+    min-width: 200px;
+    height: 200px;
+    textarea {
+      width: 90%;
+      height: 70%;
+      margin: 0 auto;
+    }
+  }
+  &:nth-child(even) {
+    transform: rotate(3deg);
+  }
+  &:nth-child(3n) {
+    transform: rotate(-2deg);
+  }
+  &:nth-child(5n) {
+    transform: rotate(4deg);
+  }
+  .tack {
+    border-radius: 50%;
+    background-color: red;
+    min-width: 10px;
+    min-height: 10px;
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    box-shadow: -3px 3px 7px 0 black, 1px -1px 4px 0 black inset;
+  }
+
+  .content {
+    padding: 20px 38px 10px 20px;
+    font-family: "Delius";
+    font-size: 24px;
+  }
+  .submit {
+    border: 0;
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: 24px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    &.submit-done {
+      color: green;
+      bottom: 0;
+      &:hover {
+        background-color: green;
+        color: white;
+      }
+    }
+    &.submit-todo {
+      color: red;
+      bottom: 0;
+      &:hover {
+        background-color: red;
+        color: white;
+      }
+    }
+    &.submit-delete {
+      color: black;
+      top: 0;
+      font-family: "Reenie Beanie";
+      border-radius: 0;
+      &:hover {
+        background-color: slategray;
+        color: white;
+      }
+    }
+  }
+}
